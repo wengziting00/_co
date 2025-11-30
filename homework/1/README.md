@@ -25,7 +25,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n
 參考AI 有看懂
 
 ## 3.Dmux
-|Not：製造一個 開關訊號 給A出口。|
-|And for a：只有 A 的地址 (當 sel=0 時) 吻合，in才能進入a。|
-|And for b：只有 B 的地址 (當 sel=1 時) 吻合，in才能進入b。|
+Not：製造一個 開關訊號 給A出口。\
+And for a：只有 A 的地址 (當 sel=0 時) 吻合，in才能進入a。
+And for b：只有 B 的地址 (當 sel=1 時) 吻合，in才能進入b。
 使用AI 看不懂
