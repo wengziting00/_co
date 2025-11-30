@@ -1,6 +1,12 @@
-## 1.And
+## 1.not
+AND(in, in) = in\
+NAND(in, in) = NOT(in)\
+老師上課講解
+
+
+## 2.And
 第一步:
-Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n
+Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 | a | b | n (Nand 輸出) |
 |---|---|---|
 | 0 | 0 | 1 |
@@ -20,11 +26,11 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n
 合起來就是And 閘的功能\
 參考AI 有看懂
 
- ## 2.And16
+ ## And16
 把16個小AND閘列出，每一位對應一個AND\
 參考AI 有看懂
 
-## 3.Dmux
+## Dmux
 Not：製造一個 開關訊號 給A出口。\
 And for a：只有 A 的地址 (當 sel=0 時) 吻合，in才能進入a。\
 And for b：只有 B 的地址 (當 sel=1 時) 吻合，in才能進入b。\
