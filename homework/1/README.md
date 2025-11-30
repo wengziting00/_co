@@ -1,4 +1,4 @@
-**1.And
+##And
 
 第一步:
 Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n
