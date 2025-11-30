@@ -21,7 +21,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n
 參考AI 有看懂
 
  ## 2.And16
-把16個小AND閘列出，每一位對應一個AND
+把16個小AND閘列出，每一位對應一個AND\
 參考AI 有看懂
 
 ## 3.Dmux
