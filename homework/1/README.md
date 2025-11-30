@@ -1,8 +1,19 @@
 1.And
 
-Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n。
+第一步:
+Nand(a=a, b=b, out=n);把輸入a和b送進Nand 閘，輸出為n
 a b n (Nand 輸出)
 0 0 1
 0 1 1
 1 0 1
 1 1 0
+
+第二步:
+把上一步的輸出n送進一個Not閘(非閘/反相器)，輸出就是最終的 out
+n(Nand 輸出)out(Not 輸出)
+1 0
+1 0
+1 0
+0 1
+合起來就是And 閘的功能
+使用AI看懂
