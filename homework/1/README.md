@@ -52,7 +52,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
    程式碼：Not(in=sel, out=nsel)\
    目的： 計算sel的反向訊號nsel(¬sel)，作為a輸入的開關\
    當 sel=0 時，nsel=1(允許a通過)\
-   當 sel=1 時，nsel=0(關閉a通道)\
+   當 sel=1 時，nsel=0(關閉a通道)
    
 2. 處理輸入 a(And 1)
    程式碼： And(a=a, b=nsel, out=aPart)\
@@ -71,7 +71,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 5. 組合輸出 (Or)
 程式碼： Or(a=aPart, b=bPart, out=out)\
 公式對應：out =aPart ∨ bPart\
-作用： 將這兩個中間結果 (aPar 和bPart) 進行 Or 運算，得到最終輸出。由於在任何時候，aPart和 bPart 只有一個可能等於in}的值，另一個必定是 0，所以 Or} 運算確保了輸出out 總是等於被選中的那個輸入\
+作用： 將這兩個中間結果 (aPar 和bPart) 進行 Or 運算，得到最終輸出。由於在任何時候，aPart和 bPart 只有一個可能等於in}的值，另一個必定是 0，所以 Or} 運算確保了輸出out 總是等於被選中的那個輸入
 
 參考AI看不懂
 
