@@ -55,23 +55,23 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
    當 sel=1 時，nsel=0(關閉a通道)\
    
 2. 處理輸入 a(And 1)
-   程式碼： And(a=a, b=nsel, out=aPart)
-   公式對應： aPart = a ∧ nsel
-   作用： 這個 And 閘是一個「受控開關」
-   當 sel=0 (nsel=1)： aPart = a ∧  aPart= a (a 的值被傳遞)
+   程式碼： And(a=a, b=nsel, out=aPart)\
+   公式對應： aPart = a ∧ nsel\
+   作用： 這個 And 閘是一個「受控開關」\
+   當 sel=0 (nsel=1)： aPart = a ∧  aPart= a (a 的值被傳遞)\
    當 sel=1nsel=0)：aPart= a ∧ 0 aPart= 0 (a 的值被阻斷為 0)
    
-3. 處理輸入 b (And 2)
-程式碼： And(a=b, b=sel, out=bPart);
-公式對應： bPart= b ∧sel
-作用： 這是另一個「受控開關」。
-當sel=0：bPart = b ∧ bPart= 0 (b的值被阻斷為 0)
+4. 處理輸入 b (And 2)
+程式碼： And(a=b, b=sel, out=bPart)\
+公式對應： bPart= b ∧sel\
+作用： 這是另一個「受控開關」\
+當sel=0：bPart = b ∧ bPart= 0 (b的值被阻斷為 0)\
 當sel=1：bPart = b∧ bPart = b。 (b的值被傳遞)
 
-4. 組合輸出 (Or)
-程式碼： Or(a=aPart, b=bPart, out=out)
-公式對應：out =aPart ∨ bPart
-作用： 將這兩個中間結果 (aPar 和bPart) 進行 Or 運算，得到最終輸出。由於在任何時候，aPart和 bPart 只有一個可能等於in}的值，另一個必定是 0，所以 Or} 運算確保了輸出out 總是等於被選中的那個輸入。
+5. 組合輸出 (Or)
+程式碼： Or(a=aPart, b=bPart, out=out)\
+公式對應：out =aPart ∨ bPart\
+作用： 將這兩個中間結果 (aPar 和bPart) 進行 Or 運算，得到最終輸出。由於在任何時候，aPart和 bPart 只有一個可能等於in}的值，另一個必定是 0，所以 Or} 運算確保了輸出out 總是等於被選中的那個輸入\
 
 參考AI看不懂
 
