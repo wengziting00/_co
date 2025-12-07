@@ -169,7 +169,7 @@ sel = 1 → 輸出 !x\
 對 y 做一模一樣的流程：zy, ny\
 Mux16(a=y, b=false, sel=zy, out=y_zeroed);
 Not16(in=y_zeroed, out=y_not);
-Mux16(a=y_zeroed, b=y_not, sel=ny, out=y_in);
+Mux16(a=y_zeroed, b=y_not, sel=ny, out=y_in);\
 ➡ 完整實現 zy 與 ny 的邏輯。
 
 第三步：決定要算 AND 還是 ADD\
