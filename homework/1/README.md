@@ -109,7 +109,6 @@ Carry (進位)：結果的最高位（左邊的位元）
 
 8. FullAdder
 1. 第一個 Half Adder（計算 $a + b$）
-
 程式碼： HalfAdder(a=a, b=b, sum=s1, carry=c1)
 功能：計算 $a$ 和 $b$ 的和
 
@@ -117,7 +116,6 @@ Carry (進位)：結果的最高位（左邊的位元）
 輸出第一個進位 $\mathbf{c1}$（$a \land b$）
 
 2. 第二個 Half Adder（計算 $s1 + c$）
-
 程式碼： HalfAdder(a=s1, b=c, sum=sum, carry=c2)
 功能：計算上一步的中間和 $\mathbf{s1}$ 和輸入進位 $\mathbf{c}$ 的和
 
@@ -125,34 +123,16 @@ $\mathbf{sum}$ 輸出：
 這個結果就是最終的和位元：
 三個位元 $a,b,c$ 的總和之右邊那一位。
 
-sum
-=
-𝑠
-1
-⊕
-𝑐
-=
-(
-𝑎
-⊕
-𝑏
-)
-⊕
-𝑐
-sum=s1⊕c=(a⊕b)⊕c
+sum=𝑠1⊕𝑐=(𝑎⊕𝑏)⊕𝑐
 
 $\mathbf{c2}$ 輸出：
 這是 $s1$ 和 $c$ 相加產生的第二個進位。
 
 3. Or 閘（計算最終進位 $\text{carry}$）
-
 程式碼： Or(a=c1, b=c2, out=carry)
 功能：決定最終的進位輸出 $\mathbf{carry}$。
-
 $\mathbf{c1}$：代表 $a + b$ 產生的進位
-
 $\mathbf{c2}$：代表 $(a+b\text{ 的和}) + c$ 產生的進位
-
 只要 $c1$ 或 $c2$ 有任一個為 1，就會產生最後的進位：
 
 carry
@@ -162,7 +142,6 @@ carry
 ∨
 𝑐
 2
-carry=c1∨c2
 
 
  ## And16
