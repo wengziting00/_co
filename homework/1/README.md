@@ -107,6 +107,9 @@ Carry (進位)：結果的最高位（左邊的位元）
 觀察 Carry 這一欄：只有當 a 和b 同時是 1 時，輸出才是 1\
 程式碼： AND(a=a, b=b, out=carry)
 
+## 8.FullAdder
+1. 第一個 Half Adder (計算 $a + b$)程式碼： HalfAdder(a=a, b=b, sum=s1, carry=c1);功能：計算 $a$ 和 $b$ 的和。輸出 中間和 $\mathbf{s1}$（$a \oplus b$）。輸出 第一個進位 $\mathbf{c1}$（$a \land b$）。2. 第二個 Half Adder (計算 $s1 + c$)程式碼： HalfAdder(a=s1, b=c, sum=sum, carry=c2);功能：計算上一步的中間和 $\mathbf{s1}$ 和輸入進位 $\mathbf{c}$ 的和。$\mathbf{sum}$ 輸出： 這個結果就是最終的和位元。因為這是 $a, b, c$ 三個位元相加的最終和。$$\text{sum} = s1 \oplus c = (a \oplus b) \oplus c$$$\mathbf{c2}$ 輸出： 這是 $s1$ 和 $c$ 相加產生的第二個進位。3. Or 閘 (計算最終進位 $\text{carry}$)程式碼： Or(a=c1, b=c2, out=carry);功能： 決定最終的進位輸出 $\mathbf{\text{carry}}$。$\mathbf{c1}$ 代表 $a+b$ 產生的進位。$\mathbf{c2}$ 代表 $(a+b \text{ 的和}) + c$ 產生的進位。只要 $c1$ 或 $c2$ 發生了任何一個進位，最終就必須輸出進位。這就是 $\text{Or}$ 閘的作用：$$\text{carry} = c1 \lor c2$$
+
 
  ## And16
 把16個小AND閘列出，每一位對應一個AND\
