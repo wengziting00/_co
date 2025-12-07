@@ -175,7 +175,7 @@ Mux16(a=y_zeroed, b=y_not, sel=ny, out=y_in);\
 第三步：決定要算 AND 還是 ADD\
 Add16(a=x_in, b=y_in, out=x_plus_y);\
 And16(a=x_in, b=y_in, out=x_and_y);\
-Mux16(a=x_and_y, b=x_plus_y, sel=f, out=out_f);\
+Mux16(a=x_and_y, b=x_plus_y, sel=f, out=out_f);
 
 f=0 → AND\
 f=1 → ADD\
