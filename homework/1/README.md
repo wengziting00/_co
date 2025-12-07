@@ -113,8 +113,8 @@ Carry (進位)：結果的最高位（左邊的位元）
 程式碼： HalfAdder(a=a, b=b, sum=s1, carry=c1)
 功能：計算 $a$ 和 $b$ 的和
 
-輸出中間和 $\mathbf{s1}$（$a \oplus b$）
-輸出第一個進位 $\mathbf{c1}$（$a \land b$）
+輸出中間和 s1（a ⊕ b）
+輸出第一個進位 c1（a ⊕ b）
 
 2. 第二個 Half Adder（計算 $s1 + c$）
 
