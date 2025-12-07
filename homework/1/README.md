@@ -194,7 +194,7 @@ two's complement 數的 MSB 是負號位\
 final_out[15] = 1 表示 out < 0\
 ➡ 符合：ng = (out < 0)
 
-🔵 第六步：判斷是否為零（zr）
+第六步：判斷是否為零（zr）\
 Or8Way(in=final_out[0..7], out=or_a);
 Or8Way(in=final_out[8..15], out=or_b);
 Or(a=or_a, b=or_b, out=is_not_zero); 
