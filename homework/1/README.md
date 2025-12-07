@@ -107,7 +107,7 @@ Carry (進位)：結果的最高位（左邊的位元）
 觀察 Carry 這一欄：只有當 a 和b 同時是 1 時，輸出才是 1\
 程式碼： AND(a=a, b=b, out=carry)
 
-8. FullAdder
+## 8. FullAdder
 1. 第一個 Half Adder（計算 $a + b$）
 
 程式碼： HalfAdder(a=a, b=b, sum=s1, carry=c1)
