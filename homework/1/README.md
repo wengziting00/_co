@@ -146,9 +146,8 @@ carry=c1∨c2
 參考AI 有看懂
 
 ## 10.Inc16
-最右邊（LSB）只需 +1，用 HalfAdder(a, 1) 最簡單\
+最右邊（LSB）只需 +1，用 HalfAdder(a, 1) \
 其他各 bit 都是\
-該 bit + 前一位 carry + 0\
-用 FullAdder 就能完成\
+該 bit + 前一位 carry + 0 用 FullAdder \
 最左邊的 carry（ignore）不輸出
 
