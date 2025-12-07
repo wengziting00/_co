@@ -159,7 +159,7 @@ sel = 1 → 輸出 b（全 false）→ 16 個 0\
 ➡ 符合： if (zx == 1) x = 0
 
 第二步：nx → 把 x 取反或保持原樣
-Not16(in=x_zeroed, out=x_not);
+Not16(in=x_zeroed, out=x_not);\
 Mux16(a=x_zeroed, b=x_not, sel=nx, out=x_in);
 
 sel = 0 → 輸出原本的 x\
@@ -167,28 +167,28 @@ sel = 1 → 輸出 !x\
 ➡ 符合： if (nx == 1) x = !x
 
 對 y 做一模一樣的流程：zy, ny\
-Mux16(a=y, b=false, sel=zy, out=y_zeroed);
-Not16(in=y_zeroed, out=y_not);
+Mux16(a=y, b=false, sel=zy, out=y_zeroed);\
+Not16(in=y_zeroed, out=y_not);\
 Mux16(a=y_zeroed, b=y_not, sel=ny, out=y_in);\
 ➡ 完整實現 zy 與 ny 的邏輯。
 
 第三步：決定要算 AND 還是 ADD\
-Add16(a=x_in, b=y_in, out=x_plus_y);
-And16(a=x_in, b=y_in, out=x_and_y);
-Mux16(a=x_and_y, b=x_plus_y, sel=f, out=out_f);
+Add16(a=x_in, b=y_in, out=x_plus_y);\
+And16(a=x_in, b=y_in, out=x_and_y);\
+Mux16(a=x_and_y, b=x_plus_y, sel=f, out=out_f);\
 
 f=0 → AND\
 f=1 → ADD\
 ➡ 符合：if (f) out = x+y else out = x & y
 
-第四步：是否取反輸出（no）
-Not16(in=out_f, out=out_not);
+第四步：是否取反輸出（no）\
+Not16(in=out_f, out=out_not);\
 Mux16(a=out_f, b=out_not, sel=no, out=out[0..15], out=final_out); \
 no=0 → out = out_f\
 no=1 → out = !out_f\
 最後 out 與 final_out 同步
 
-第五步：判斷輸出是否為負（ng）
+第五步：判斷輸出是否為負（ng）\
 And(a=final_out[15], b=true, out=ng); \
 two's complement 數的 MSB 是負號位\
 final_out[15] = 1 表示 out < 0\
