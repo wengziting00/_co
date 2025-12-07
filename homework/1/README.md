@@ -142,6 +142,7 @@ $\mathbf{c2}$：代表 $(a+b\text{ 的和}) + c$ 產生的進位
 carry=c1∨c2
 
 
+
  ## And16
 把16個小AND閘列出，每一位對應一個AND\
 參考AI 有看懂
