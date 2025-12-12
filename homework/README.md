@@ -215,3 +215,12 @@ Not(in=is_not_zero, out=zr);
 ...以此類推輸出\
 $out[15]$：只從 $a[15]$ 和 $b[15]$ 中選一個\
 由於所有 $16$ 個選擇都由同一個 $\text{sel}$ 訊號控制，所以我們需要 $16$ 個基礎的 $\text{Mux}$ 晶片並行運作，每個晶片負責一個位元
+
+## Bit
+
+步驟 1: 輸出回饋 (Feedback)\
+DFF(in=dff_in, out=out, out=prev_out);\
+$\text{out}$ 埠（即晶片的當前值）同時輸出到一個內部訊號 $\mathbf{\text{prev\_out}}$\
+$\mathbf{\text{prev\_out}}$ 代表了暫存器在 目前 時鐘週期儲存的值\
+步驟 2: 載入決策 (Mux)Mux(a=prev_out, b=in, sel=load, out=dff_in);
+這個 $\text{Mux}$ 晶片決定了 $\text{DFF}$ 的下一個輸入 ($\text{dff\_in}$) 是什麼
