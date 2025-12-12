@@ -88,7 +88,7 @@ Carry (進位)：結果的最高位（左邊的位元）
 1. 和位元 (Sum) 的計算Sum的值是 a 和 b 相加後，不帶進位 的結果
    
 |a|b|a+b (十進位)|Sum (結果的最低位)|
-|--|--|---------|------------|
+
 |0|0|0|0|
 |0|1|1|1|
 |1|0|1|1|
@@ -222,5 +222,10 @@ $out[15]$：只從 $a[15]$ 和 $b[15]$ 中選一個\
 DFF(in=dff_in, out=out, out=prev_out);\
 out 埠（即晶片的當前值）同時輸出到一個內部訊號 prev_out
 prev_out代表了暫存器在 目前 時鐘週期儲存的值\
-步驟 2: 載入決策 (Mux)Mux(a=prev_out, b=in, sel=load, out=dff_in);
+步驟 2: 載入決策 (Mux)Mux(a=prev_out, b=in, sel=load, out=dff_in);\
 這個 Mux 晶片決定了 DFF 的下一個輸入 dff_in 是什麼
+
+|load|Mux 輸出 dff_in|DFF 在下週期儲存的值|邏輯動作|
+|--|--|---------|------------|
+|0|prev_out|DFF 儲存它 自己舊的值|保持 (Maintain)：out(t+1)=out(t)|
+|1|in|DFF 儲存 新的輸入值|載入 (Load)：out(t+1)=in(t)||
