@@ -1,10 +1,10 @@
-## 1.not
+## not
 AND(in, in) = in\
 NAND(in, in) = NOT(in)\
 老師上課講解
 
 
-## 2.And
+## And
 第一步:
 Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 | a | b | n (Nand 輸出) |
@@ -26,7 +26,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 合起來就是And 閘的功能\
 參考AI 有看懂
 
-## 3.Or
+## Or
 |a|b  |	na|	nb|na AND nb|	NAND(na,nb)|	最終 out|
 |--|--|---|---|---------|------------|---------|
 |0 |	0|	1 |	1 |	1       |	0          |	0       |
@@ -37,7 +37,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 參考AI有看懂
 
 
-## 4.Xor
+## Xor
 |a|b|nab=¬(a∧b) (Nand 1)|anb=¬(a∧nab) (Nand 2)|bna=¬(b∧nab) (Nand 3)|輸出 out=¬(anb∧bna) (Nand 4)|Xor預期結果|
 |--|--|---|---|---------|------------|--------|
 |0|0|¬(0∧0)=1|¬(0∧1)=1|¬(0∧1)=1|¬(1∧1)=0|0|
@@ -47,7 +47,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 
 參考AI 看不懂
 
-## 5.Mxu
+## Mxu
 1. 準備¬sel(Not)\
    程式碼：Not(in=sel, out=nsel)\
    目的： 計算sel的反向訊號nsel(¬sel)，作為a輸入的開關\
@@ -75,13 +75,13 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 
 參考AI看不懂
 
-## 6.DMux
+## DMux
 先把 sel 反相：Not\
 用 in 和 NOT sel 做 AND，得到 a\
 用 in 和 sel 做 AND，得到 b
 參考AI 有看懂
 
-## 7.Halfadder
+## Halfadder
 一個半加器負責計算兩個單一位元 ($a$ 和 $b$) 的和，會產生兩個輸出：\
 Sum (和)：結果的最低位（右邊的位元）\
 Carry (進位)：結果的最高位（左邊的位元）
@@ -107,7 +107,7 @@ Carry (進位)：結果的最高位（左邊的位元）
 觀察 Carry 這一欄：只有當 a 和b 同時是 1 時，輸出才是 1\
 程式碼： AND(a=a, b=b, out=carry)
 
-## 8. FullAdder
+## FullAdder
 1. 第一個 Half Adder（計算 $a + b$）
 
 程式碼： HalfAdder(a=a, b=b, sum=s1, carry=c1)
@@ -141,17 +141,17 @@ $\mathbf{c2}$：代表 $(a+b\text{ 的和}) + c$ 產生的進位
 只要 $c1$ 或 $c2$ 有任一個為 1，就會產生最後的進位：\
 carry=c1∨c2
 
-## 9.And16
+## And16
 把16個小AND閘列出，每一位對應一個AND\
 參考AI 有看懂
 
-## 10.Inc16
+## Inc16
 最右邊（LSB）只需 +1，用 HalfAdder(a, 1) \
 其他各 bit 都是\
 該 bit + 前一位 carry + 0 用 FullAdder \
 最左邊的 carry（ignore）不輸出
 
-## 11.ALU
+## ALU
 第一步：zx → x = 0 或 x 保持原樣
 Mux16(a=x, b=false, sel=zx, out=x_zeroed)\
 sel = 0 → 輸出 x\
