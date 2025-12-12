@@ -235,10 +235,10 @@ prev_out代表了暫存器在 目前 時鐘週期儲存的值\
 既然 $16$ 個位元在儲存上是獨立的，我們可以將 $16$ 個最基本的 1 位元儲存單元 ($\text{Bit}$ 晶片) 並排放置\
 16 個 $\text{Bit}$ 晶片：\
 $\text{Bit}_0$ 負責 $in[0] \implies out[0]\
-$$\text{Bit}_1$ 負責 $in[1] \implies out[1]\
+$\text{Bit}_1$ 負責 $in[1] \implies out[1]\
 ...\
 \text{Bit}_{15}$ 負責 $in[15] \implies out[15]\
-$共享 $\text{load}$ 訊號：\
+共享 load 訊號：\
 load 訊號就像一個總開關，同時連接到所有 $16$ 個 $\text{Bit}$ 晶片的 $\text{load}$ 輸入\
 當 $\text{load}=1$ 時，所有 $16$ 個 $\text{Bit}$ 晶片同時載入它們各自的輸入位元\
 當 $\text{load}=0$ 時，所有 $16$ 個 $\text{Bit}$ 晶片同時保持它們各自的舊值
