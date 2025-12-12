@@ -223,4 +223,4 @@ DFF(in=dff_in, out=out, out=prev_out);\
 out 埠（即晶片的當前值）同時輸出到一個內部訊號 prev_out
 prev_out代表了暫存器在 目前 時鐘週期儲存的值\
 步驟 2: 載入決策 (Mux)Mux(a=prev_out, b=in, sel=load, out=dff_in);
-這個 $\text{Mux}$ 晶片決定了 $\text{DFF}$ 的下一個輸入 ($\text{dff\_in}$) 是什麼
+這個 Mux 晶片決定了 DFF 的下一個輸入 dff_in 是什麼
