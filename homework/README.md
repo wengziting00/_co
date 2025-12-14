@@ -75,10 +75,17 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 第一層用 sel[0]，分別在 (a, b) 和 (c, d) 兩組中各選一個輸出，得到 ab_out 與 cd_out\
 第二層再用 sel[1]，在 ab_out 和 cd_out 之間做選擇，決定最終的 out
 
+## Mux8Way16
+用 sel[0..1] 在前四組輸入 (a–d) 和後四組輸入 (e–h) 中各選出一個 16 位元資料，接著再用 sel[2] 決定要輸出前四組的結果還是後四組的結果，因此三位元選擇訊號剛好對應八種輸入情況，透過「先選哪一半、再選其中一個」的分層方式，用較小的多工器組合成 8 路 16-bit 多工器。
+
 ## DMux
 先把 sel 反相：Not\
 用 in 和 NOT sel 做 AND，得到 a\
 用 in 和 sel 做 AND，得到 b
+
+##Not16
+每一行都是單獨對應一位：out[i] = NOT in[i]，從 in[0] 到 in[15]\
+就是把 16 位元的二進位數做按位元取反，等同於硬體中的 16-bit inverter
 
 
 ## Halfadder
