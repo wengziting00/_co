@@ -290,3 +290,14 @@ out48：對應輸出 e–h（sel[2] = 1）
 當 load = 1 時，DMux8Way 依照高 3 位 address，把 load 訊號只送到其中一個 RAM64（l0–l7），確保一次只寫入一個區塊；其他 RAM64 的內容保持不變。所有 RAM64 都同時接收 in 和低 6 位 address，但只有被選中的那一個會真正寫入資料。
 
 讀取時，8 個 RAM64 都會輸出各自目前位址的資料，再由 Mux8Way16 根據同樣的高 3 位 address，選出正確的一組 16-bit 資料作為 out。
+
+## RAM4K
+寫入時，DMux8Way 依照高 3 位 address，把 load 訊號只送到其中一個 RAM512（l0–l7），確保一次只會寫入 4096 個暫存器中的某一個；其他 RAM512 不會被改動。
+
+讀取時，8 個 RAM512 都會輸出各自對應位址的資料，再由 Mux8Way16 根據同樣的高 3 位 address，選出正確的一組 16-bit 資料作為 out。
+
+## RAM16K
+這一層只需要 4 個 RAM4K\
+寫入時，DMux4Way 依照高 2 位 address，把 load 訊號只送到其中一個 RAM4K（l0–l3），確保一次只會寫入 16K 中的某一個位置，其餘區塊內容保持不變。
+
+讀取時，4 個 RAM4K 都會輸出各自對應位址的資料，再由 Mux4Way16 根據相同的高 2 位 address，選出正確的 16-bit 資料作為 out。
