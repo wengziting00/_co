@@ -1,8 +1,6 @@
 ## not
 AND(in, in) = in\
-NAND(in, in) = NOT(in)\
-老師上課講解
-
+NAND(in, in) = NOT(in)
 
 ## And
 第一步:
@@ -24,7 +22,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 |0  |  1| |
 
 合起來就是And 閘的功能\
-參考AI 有看懂
+
 
 ## Or
 |a|b  |	na|	nb|na AND nb|	NAND(na,nb)|	最終 out|
@@ -34,7 +32,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 |1 |	0|	0 |	1 |	0       |	1          |	1       |
 |1 |	1|	0 |	0 |	0       |	1          |	1       | |
 
-參考AI有看懂
+
 
 
 ## Xor
@@ -45,7 +43,7 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 |1|0|¬(1∧0)=1|¬(1∧1)=0|¬(0∧1)=1|¬(0∧1)=1|1|
 |1|1|¬(1∧1)=0|¬(1∧0)=1|¬(1∧0)=1|¬(1∧1)=0|0| |
 
-參考AI 看不懂
+
 
 ## Mxu
 1. 準備¬sel(Not)\
@@ -73,13 +71,15 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 公式對應：out =aPart ∨ bPart\
 作用： 將這兩個中間結果 (aPar 和bPart) 進行 Or 運算，得到最終輸出。由於在任何時候，aPart和 bPart 只有一個可能等於in}的值，另一個必定是 0，所以 Or} 運算確保了輸出out 總是等於被選中的那個輸入
 
-參考AI看不懂
+## Mux4Way16
+第一層用 sel[0]，分別在 (a, b) 和 (c, d) 兩組中各選一個輸出，得到 ab_out 與 cd_out\
+第二層再用 sel[1]，在 ab_out 和 cd_out 之間做選擇，決定最終的 out
 
 ## DMux
 先把 sel 反相：Not\
 用 in 和 NOT sel 做 AND，得到 a\
 用 in 和 sel 做 AND，得到 b
-參考AI 有看懂
+
 
 ## Halfadder
 一個半加器負責計算兩個單一位元 ($a$ 和 $b$) 的和，會產生兩個輸出：\
@@ -143,7 +143,7 @@ carry=c1∨c2
 
 ## And16
 把16個小AND閘列出，每一位對應一個AND\
-參考AI 有看懂
+
 
 ## Inc16
 最右邊（LSB）只需 +1，用 HalfAdder(a, 1) \
@@ -301,3 +301,16 @@ out48：對應輸出 e–h（sel[2] = 1）
 寫入時，DMux4Way 依照高 2 位 address，把 load 訊號只送到其中一個 RAM4K（l0–l3），確保一次只會寫入 16K 中的某一個位置，其餘區塊內容保持不變。
 
 讀取時，4 個 RAM4K 都會輸出各自對應位址的資料，再由 Mux4Way16 根據相同的高 2 位 address，選出正確的 16-bit 資料作為 out。
+
+## PC
+
+Register 它在每個 clock 都會把 mux_out 存進去，並把目前的值輸出成 out / current_out\
+Inc16 先根據目前的值 current_out 算出 current_out + 1，得到 inc_out
+
+接下來三個 Mux16 依序實現控制邏輯：
+第一個 Mux 用 inc 決定是「保持原值」還是「加一」\
+第二個 Mux 用 load 決定是否改成外部輸入 in\
+第三個 Mux 用 reset 決定是否強制輸出 0
+
+因為 Mux 是一層一層接的，後面的 Mux 會覆蓋前面的結果，所以自然形成了題目要求的優先順序：
+reset ＞ load ＞ inc ＞ 保持不變。
