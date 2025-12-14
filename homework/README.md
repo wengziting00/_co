@@ -32,8 +32,13 @@ Nand(a=a, b=b, out=n);把輸入a和b送進Nand閘，輸出為n 有1即為0
 |1 |	0|	0 |	1 |	0       |	1          |	1       |
 |1 |	1|	0 |	0 |	0       |	1          |	1       | |
 
+## Or8Way
+
+它先用兩個 Or4Way 分別計算前四個 (in[0..3]) 和後四個 (in[4..7]) 的 OR，得到 or4a_out 和 or4b_out，再用一個 2-input Or 把這兩個結果合併成最終輸出 out
 
 
+## Or16
+每一行對應一位：out[i] = a[i] OR b[i]，從第 0 位到第 15 位
 
 ## Xor
 |a|b|nab=¬(a∧b) (Nand 1)|anb=¬(a∧nab) (Nand 2)|bna=¬(b∧nab) (Nand 3)|輸出 out=¬(anb∧bna) (Nand 4)|Xor預期結果|
@@ -157,6 +162,10 @@ carry=c1∨c2
 其他各 bit 都是\
 該 bit + 前一位 carry + 0 用 FullAdder \
 最左邊的 carry（ignore）不輸出
+
+## Add16
+每一位都計算對應的 a[i] + b[i] + c_in，並把進位傳給下一位，最低位進位設為 0，最高位進位忽略，這樣就能正確實現 16-bit 二補數加法
+
 
 ## ALU
 第一步：zx → x = 0 或 x 保持原樣
