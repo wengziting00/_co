@@ -460,3 +460,5 @@ RAM 的兩段再用 Or 合成一個 loadRAM
 
 讀取（Mux4Way16）\
 依 address[13..14] 選出 RAM / Screen / Keyboard 的輸出
+
+除了老師上課講解的題目外其他都有使用AI
