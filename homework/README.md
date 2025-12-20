@@ -444,3 +444,19 @@ j3 且 pos → 跳
 
 只要任一成立：
 → PC load = 1，跳到 A 暫存器的位址
+
+## Memory
+address[13..14] 決定存取對象
+
+00 / 01 → RAM
+
+10 → Screen
+
+11 → Keyboard
+
+寫入（DMux4Way）
+load 只會送到對應的裝置\
+RAM 的兩段再用 Or 合成一個 loadRAM
+
+讀取（Mux4Way16）\
+依 address[13..14] 選出 RAM / Screen / Keyboard 的輸出
