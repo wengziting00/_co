@@ -28,8 +28,6 @@ CHIP Not16 {
     Not(in=in[13], out=out[13]);
     Not(in=in[14], out=out[14]);
     Not(in=in[15], out=out[15]);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> bc80820114b04b246791f4750e50fe12456abb1c
+
+
