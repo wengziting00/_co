@@ -27,4 +27,8 @@ CHIP Inc16 {
     FullAdder(a=in[13], b=false, c=c12, sum=out[13], carry=c13);
     FullAdder(a=in[14], b=false, c=c13, sum=out[14], carry=c14);
     FullAdder(a=in[15], b=false, c=c14, sum=out[15], carry=ignore);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bc80820114b04b246791f4750e50fe12456abb1c

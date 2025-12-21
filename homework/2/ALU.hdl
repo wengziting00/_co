@@ -19,4 +19,8 @@ CHIP ALU {
     Or8Way(in=final_out[8..15], out=or_b);
     Or(a=or_a, b=or_b, out=is_not_zero); 
     Not(in=is_not_zero, out=zr);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bc80820114b04b246791f4750e50fe12456abb1c

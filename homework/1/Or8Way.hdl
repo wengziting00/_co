@@ -14,4 +14,8 @@ CHIP Or8Way {
     Or4Way(in=in[0..3], out=or4a_out);
     Or4Way(in=in[4..7], out=or4b_out);
     Or(a=or4a_out, b=or4b_out, out=out);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bc80820114b04b246791f4750e50fe12456abb1c

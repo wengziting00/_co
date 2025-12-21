@@ -11,7 +11,10 @@ CHIP Not {
     OUT out;
 
     PARTS:
+<<<<<<< HEAD
     //// Replace this comment with your code.
 
+=======
+>>>>>>> bc80820114b04b246791f4750e50fe12456abb1c
     Nand(a = in, b = in, out = out);
 }

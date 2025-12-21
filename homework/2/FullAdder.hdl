@@ -15,4 +15,8 @@ CHIP FullAdder {
     HalfAdder(a=s1, b=c, sum=sum, carry=c2);
     Or(a=c1, b=c2, out=carry);
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bc80820114b04b246791f4750e50fe12456abb1c

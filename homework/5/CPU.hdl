@@ -58,4 +58,6 @@ CHIP CPU {
     And(a=isC, b=jumpCondition, out=doJump);
     Not(in=doJump, out=doInc);
     PC(in=Aout, load=doJump, inc=doInc, reset=reset, out[0..14]=pc);
+
 }
+

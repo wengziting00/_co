@@ -13,4 +13,8 @@ CHIP And {
     PARTS:
     Nand(a=a, b=b, out=n);
     Not(in=n, out=out);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bc80820114b04b246791f4750e50fe12456abb1c
