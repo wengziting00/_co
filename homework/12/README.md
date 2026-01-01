@@ -5,4 +5,36 @@
 
 
 # 第七章
-第七章 Project 7: Virtual Machine I – Stack Arithmetic and Memory Access 主要在介紹如何設計一個 虛擬機（VM），這個 VM 介於高階語言（像 Jack）和 Hack CPU 之間，負責將高階語言的指令轉換成底層可執行的 Hack 組合語言。在這一章，你會學習如何處理 stack-based 的運算，包括基本算術運算（加、減、與、或、負號等）以及比較運算（等於、大於、小於），並學會如何使用 push/pop 指令存取不同的記憶體段（local、argument、this、that、temp、pointer、constant、static）。這一章的重點是理解 虛擬機的抽象層與 stack 操作，並練習把 VM 指令正確翻譯成 Hack ASM，為第八章的函數呼叫和多檔案程式管理打下基礎，讓程式設計可以更有組織、模組化地運作。
+1. 虛擬機（VM）的角色：中介層
+在 Nand2Tetris 的架構中，直接將高階語言（如 Jack）編譯成機器碼非常困難。因此，作者引入了一個虛擬機層（VM Layer）。
+
+高階語言（Jack）先編譯成 VM 程式碼（.vm 檔）。
+
+VM 程式碼 再經由你的 VM Translator 轉換為 Hack 組合語言（.asm 檔）。
+
+最後由第 6 章的組譯器轉為 機器碼。
+
+這種類似 Java (Bytecode) 或 .NET (MSIL) 的設計，讓編譯器變得模組化且易於實作。
+
+2. 堆疊架構（Stack-based Computing）
+第 7 章定義了一種「堆疊式」的運算模型。所有的運算都發生在堆疊上：
+
+算術運算：例如執行 add 時，VM 會從堆疊頂端彈出（pop）兩個數字，相加後再壓回（push）堆疊。
+
+邏輯比較：如 eq、gt、lt，比較結果為真時壓入 -1 (True)，否則壓入 0 (False)。
+
+這章要求你實作 9 個算術與邏輯指令： add, sub, neg, eq, gt, lt, and, or, not
+
+3. 記憶體區段（Memory Segments）
+這是第 7 章最具挑戰性的部分。VM 抽象出了多個「記憶體區段」，讓程式碼能處理變數：
+
+local, argument, this, that：對應到 RAM 的不同區塊。
+
+pointer, temp：固定位置的暫存區。
+
+static：靜態變數（如你之前提供的 StaticTest.vm）。
+
+constant：偽區段，純粹用來產生數值。
+
+你必須撰寫程式碼，將 push argument 0 這種邏輯指令，轉換成 Hack Assembly 中複雜的 A, D, M 暫存器操作。
+
