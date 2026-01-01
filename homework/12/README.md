@@ -38,3 +38,56 @@ constant：偽區段，純粹用來產生數值。
 
 你必須撰寫程式碼，將 push argument 0 這種邏輯指令，轉換成 Hack Assembly 中複雜的 A, D, M 暫存器操作。
 
+# 第八章
+1. 流程控制 (Program Flow)
+這是相對簡單的部分，你必須實作三個指令：
+
+label symbol：定義一個位置。
+
+goto symbol：無條件跳轉。
+
+if-goto symbol：若堆疊頂端的值不為 0（True），則跳轉。
+
+實作細節： 這些指令會被轉換成 Hack Assembly 的 @symbol 與 JMP 或 JNE 指令。
+
+2. 函式呼叫與堆疊幀 (The Function Stack Frame)
+這是全書最精彩也最燒腦的地方。當程式執行 call FunctionName nArgs 時，你必須在堆疊中建立一個 「框架 (Frame)」。
+
+為了讓函式執行完後能順利「回到過去」，你必須在堆疊裡存下：
+
+Return Address：回來的路徑。
+
+LCL, ARG, THIS, THAT：呼叫者的記憶體狀態。
+
+這意味著當一個函式被呼叫時，堆疊會長這樣：
+
+[傳入的參數]
+
+[返回地址]
+
+[舊的 LCL]
+
+[舊的 ARG]
+
+[舊的 THIS]
+
+[舊的 THAT]
+
+新函式的 LCL 指標從這裡開始
+
+3. 函式返回 (Return Logic)
+return 是第 8 章最難寫的 Assembly 模板。你必須：
+
+把函式的傳回值放到 ARG[0] 的位置（這會變成呼叫者看到的堆疊頂端）。
+
+恢復呼叫者的 SP, LCL, ARG, THIS, THAT。
+
+跳轉回之前存下的 Return Address。
+
+4. 引導程式 (Bootstrap Code)
+在第 7 章，我們是手動設定 SP=256。但在第 8 章，你的 Translator 必須自動產生一段 啟動碼：
+
+將 SP 初始化為 256。
+
+呼叫 Sys.init（這是所有 Jack 程式的進入點，相當於 C 或 Java 的 main）。
+
