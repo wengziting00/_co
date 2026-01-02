@@ -1,0 +1,1 @@
+這份 Main.jack + Square.jack 程式是在用 Jack 高階語言 定義一個物件（Square），用 constructor 建立它，用 method 操作它，並在 Main 裡用 while (true) 不斷讀取 Keyboard.keyPressed()，再呼叫 Square 的移動方法；Square 內部透過作業系統提供的 Screen.drawRectangle 把方塊畫到螢幕上，完全不碰 CPU、VM 或硬體實作，正好示範了第九章的重點：學會用 Jack 語言與 OS API 寫一個能實際跑的程式。
