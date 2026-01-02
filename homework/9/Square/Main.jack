@@ -1,15 +1,26 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/9/Square/Main.jack
-
-/** Initializes a new Square game and starts running it. */
 class Main {
     function void main() {
-        var SquareGame game;
-        let game = SquareGame.new();
-        do game.run();
-        do game.dispose();
+        var Square s;
+        var int key;
+
+        let s = Square.new(100, 100, 30);
+
+        while (true) {
+            let key = Keyboard.keyPressed();
+
+            if (key = 130) {
+                do s.moveUp();
+            } else if (key = 131) {
+                do s.moveDown();
+            } else if (key = 132) {
+                do s.moveLeft();
+            } else if (key = 133) {
+                do s.moveRight();
+            }
+
+            do Sys.wait(10);
+        }
+
         return;
     }
 }
